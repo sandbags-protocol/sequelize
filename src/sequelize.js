@@ -183,6 +183,7 @@ class Sequelize {
    * @param {boolean}  [options.logQueryParameters=false] A flag that defines if show bind parameters in log.
    */
   constructor(database, username, password, options) {
+    console.log('This is sandbags sequelize, base on official v6.28.0');
     let config;
 
     if (arguments.length === 1 && typeof database === 'object') {
