@@ -647,7 +647,11 @@ class Sequelize {
       try {
         await this.runHooks('beforeQuery', options, query);
         checkTransaction();
-        return await query.run(sql, bindParameters);
+        let trueSql = sql;
+        if (this.options.modifySql) {
+          trueSql = this.options.modifySql(sql, options, query);
+        }
+        return await query.run(trueSql, bindParameters);
       } finally {
         await this.runHooks('afterQuery', options, query);
         if (!options.transaction) {
