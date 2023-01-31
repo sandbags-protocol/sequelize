@@ -33,7 +33,7 @@ class Query extends AbstractQuery {
   async run(sql, parameters) {
     this.sql = sql;
     const { connection, options } = this;
-    console.log(sql, connection._sbconnected);
+    console.log(sql, connection._sb);
 
     const showWarnings = this.sequelize.options.showWarnings || options.showWarnings;
 

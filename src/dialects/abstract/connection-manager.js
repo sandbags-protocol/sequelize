@@ -323,11 +323,8 @@ class ConnectionManager {
    */
   async _connect(config) {
     await this.sequelize.runHooks('beforeConnect', config);
-    console.log('----start connect');
     const connection = await this.dialect.connectionManager.connect(config);
     await this.sequelize.runHooks('afterConnect', connection, config);
-    console.log('----finish connect');
-    connection._sbconnected = true;
     return connection;
   }
 
