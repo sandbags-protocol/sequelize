@@ -327,6 +327,7 @@ class ConnectionManager {
     const connection = await this.dialect.connectionManager.connect(config);
     await this.sequelize.runHooks('afterConnect', connection, config);
     console.log('----finish connect');
+    connection._sbconnected = true;
     return connection;
   }
 
